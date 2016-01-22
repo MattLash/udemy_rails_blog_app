@@ -1,7 +1,7 @@
-<h1>Creating an article</h1>
+<h1>Editing an article</h1>
 
 <% if @article.errors.any? %>
-    <h2>You had a problem CREATING NEW!</h2>
+    <h2>Something went wrong whilst EDITing!</h2>
     <ul>
         <% @article.errors.full_messages.each do |msg| %>
             <li><%= msg %></li>    
