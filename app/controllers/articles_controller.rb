@@ -9,7 +9,7 @@ class ArticlesController < ApplicationController
     def new
        @article = Article.new
     end
-    def edit
+    def edit 
         
     end
     def create
@@ -17,17 +17,17 @@ class ArticlesController < ApplicationController
         @article = Article.new(article_params)
         @article.save
         if @article.save
-            flash[:notice] = "You made the article, Woo!"
+            flash[:success] = "You made the article, Woo!"
             redirect_to article_path(@article)
         else
-            flash[:notice] = "you done fucked up!"
+            flash[:danger] = "you done fucked up!"
             render 'new'
         end
     end
     def update
        
        if @article.update(article_params)
-           flash[:notice] = "Successfully updated this stuffs"
+           flash[:success] = "Successfully updated this stuffs"
            redirect_to article_path(@article)
        else
            render 'edit'
@@ -40,7 +40,7 @@ class ArticlesController < ApplicationController
     end
     def destroy
        @article.destroy
-       flash[:notice] = "you killed that one!"
+       flash[:danger] = "you killed that one!"
        redirect_to articles_path
     end
     private
