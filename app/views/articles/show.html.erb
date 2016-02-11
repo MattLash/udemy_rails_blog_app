@@ -1,5 +1,13 @@
 <h2 class="text-center">Title: <%= @article.title %></h2>
 <div class="well col-xs-8 col-xs-offset-1">
+    <% if @article.user %>
+        <div class="panel center">
+            <span><%= link_to gravatar_for(@article.user), user_path(@article.user) %></span>
+            <p> User Name: <%=@article.user.username %></p>
+            <p> User Email: <%=@article.user.email %></p>
+            <p> Articles Posted: <%= pluralize(@article.user.articles.count, "article") if @article.user.articles %> </p>
+        </div>
+    <% end %>
     <div class="text-center"><strong>Description:</strong></div>
     <hr>
     <%= simple_format(@article.description) %>

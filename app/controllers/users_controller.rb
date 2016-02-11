@@ -1,11 +1,28 @@
 class UsersController < ApplicationController
     
+    def index
+       @users = User.all 
+    end
+    
     def new
         @user = User.new 
     end
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     def create
-    #   
         @user = User.new(user_params)
         if @user.save
             flash[:success] = "Welcome, #{@user.username}, we've been waiting for you"
@@ -14,7 +31,6 @@ class UsersController < ApplicationController
            flash[:danger] = "Let's try this again"
            render 'new'
         end
-        
     end
     def edit
         @user = User.find(params[:id])
