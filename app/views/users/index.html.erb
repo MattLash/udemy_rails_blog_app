@@ -2,6 +2,9 @@
 
 <div class="row">
     <div class="col-sm-8 col-sm-offset-2">
+        <div class="center">
+            <%= will_paginate %>
+        </div>
         <div class="well">
             <% @users.each do |user| %>
                 <div class="panel">
@@ -11,6 +14,9 @@
                     <p> Articles Posted: <%= pluralize(user.articles.count, "article") if user.articles %> </p>
                 </div>
             <% end %>
+        </div>
+        <div class="center">
+            <%= will_paginate %>
         </div>
     </div>
 </div>
