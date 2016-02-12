@@ -1,7 +1,9 @@
 <div class="jumbotron center">
     <h1>New Rails App</h1>
     <p>This be a mothaf'n rails app ninja</p>
-    <%= link_to "Sign Up!", "#", class: "btn btn-primary btn-lg" %>
-    <%= link_to "Blog!", articles_path %>
     
+    <% if !logged_in? %>
+       <%= link_to "Sign Up!", signup_path, class: "btn btn-primary btn-lg" %>
+    <% end %>
+     <%= link_to "Blog!", articles_path, class: "btn btn-danger btn-lg" %>
 </div>
