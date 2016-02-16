@@ -12,8 +12,9 @@ class UsersController < ApplicationController
     def create
         @user = User.new(user_params)
         if @user.save
+            session[:user_id] = @user.id
             flash[:success] = "Welcome, #{@user.username}, we've been waiting for you"
-            redirect_to articles_path
+            redirect_to user_path(@user)
         else
            flash[:danger] = "Let's try this again"
            render 'new'
