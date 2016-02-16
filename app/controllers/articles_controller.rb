@@ -46,12 +46,22 @@ class ArticlesController < ApplicationController
        redirect_to articles_path
     end
     private
+        
         def set_article
             @article = Article.find(params[:id]) 
         end
+        
         def article_params
             params.require(:article).permit(:title, :description) 
             
         end
+        
+        def require_same_user
+            if current_user != @article.user and !current_user.admin?
+                flash[:danger] = "You cannot edit this article, not yours. Hands off!"
+                redirect_to root_path
+            end
+        end
+        
   
 end
