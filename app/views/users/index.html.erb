@@ -5,13 +5,16 @@
         <div class="center">
             <%= will_paginate %>
         </div>
-        <div class="well">
+        <div class="well text-center">
             <% @users.each do |user| %>
                 <div class="panel">
                     <span><%= link_to gravatar_for(user), user_path(user) %></span>
                     <p> User Name: <%=user.username %></p>
                     <p> User Email: <%=user.email %></p>
                     <p> Articles Posted: <%= pluralize(user.articles.count, "article") if user.articles %> </p>
+                    <% if logged_in? and current_user.admin? %>
+                        <%= link_to "Delete User", user_path(user), method: :delete, data: {confirm: "Delete this user?"}, class: "btn btn-danger" %> 
+                    <% end %>
                 </div>
             <% end %>
         </div>
